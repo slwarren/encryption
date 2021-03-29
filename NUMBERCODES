@@ -1,0 +1,50 @@
+<html>
+<script type="text/javascript">
+function submitText()
+{
+
+
+var x;
+var y;
+var z;
+var num;
+x = document.getElementById("numberbox").value;
+y = document.getElementById("BOX1_ID").value;
+z = document.getElementById("BOX2_ID").value;
+
+
+num = parseInt(x, y).toString(z);
+document.getElementById("output").innerHTML = num;
+output.style.display = "block";
+
+}
+
+</script>
+<body>
+<label for="title">Encrypt or Decrypt a number! </label>
+<br>
+<textarea id="numberbox" rows = "5" cols "60" name = "numberbox">
+Enter your number here...
+</textarea>
+<br>
+<label for="numbase">From base: </label>
+<br>
+<input type="text" id="BOX1_ID">
+<br>
+<label for="basecon">To base: </label>
+<br>
+<input type="text" id="BOX2_ID">
+<br>
+<br>
+<button type='button' onclick="submitText()">Submit</button>
+
+
+<p id='output' type="text" style='display: none'>
+Hey
+</p>
+
+
+
+</body>
+
+</html>
