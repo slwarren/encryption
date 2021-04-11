@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <title>Crytography</title>
+        <link rel="stylesheet" href="style.css">
+
+         <script type="text/javascript">
+            function submitText()
+            {
+
+
+            var x;
+            var y;
+            var z;
+            var num;
+            x = document.getElementById("numberbox").value;
+            y = document.getElementById("BOX1_ID").value;
+            z = document.getElementById("BOX2_ID").value;
+
+
+            num = parseInt(x, y).toString(z);
+            document.getElementById("output").innerHTML = num;
+            output.style.display = "block";
+
+        }
+
+        </script>
+    </head>
+
+    <body>
+        <div class="top-menu">
+            <ul>
+            <li class="pic"><img src="2.jpg"></li>
+
+            <li><a href="home.html">Home</a></li>
+            <li><a href="encryption.html">Encryption</a></li>
+            <li><a href="decryption.html">Decryption</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="login.html" class="login-btn"><span>Login</span></a></li>
+            </ul>
+         </div>
+         <div class="page-content">
+            <div class="form-cell">
+                <label for="title">Encrypt or Decrypt a number! </label>
+                <textarea id="numberbox" rows="5" cols="60" name="numberbox" placeholder="Enter your number here...">
+                </textarea>
+            </div>
+            <div class="form-cell">
+                <label for="numbase">From base: </label>
+                <input type="text" id="BOX1_ID"/>
+            </div>
+            <div class="form-cell">
+                <label for="basecon">To base: </label>
+                <input type="text" id="BOX2_ID"/>
+            </div>
+            <div class="form-cell">
+                <button type='button' onclick="submitText()">Submit</button>
+            </div>
+        </div>
+        <p id='output' type="text" style='display: none'>
+        Hey
+        </p>
+
+    </body>
+</html>
