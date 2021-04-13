@@ -2,26 +2,188 @@
 
 <head>
     <title>Crytography</title>
-    <link rel="stylesheet" href="style.css">
-    
-</head>
-    
-    
-<body>
+    <link rel="stylesheet" href="style2.css">
+    </head>
+
+    <body>
+
     <div class="container">
     <div class="top-menu">
         <ul>
         <li class="pic"><img src="2.jpg"></li>
-            
+
         <li><a href="home.html">Home</a></li>
         <li><a href="encryption.html">Encryption</a></li>
-        <li><a href="decryption.html">Decryption</a></li>
         <li><a href="about.html">About Us</a></li>
-        <li><a href="login.html" class="login-btn"><span>Login</span></a></li>
-        </ul>
+        <li><a href="login.php">Login</a></li>
+        <li><a href="register.php">Register</a></li>
         
-       
-        </div>
+        
+        </ul>
+         </div>
+
+     <script type="text/javascript">
+
+
+function numChanger()
+{
+
+//ONLY DOES 16 DIGITS & from base 2-36
+var x;
+var y;
+var z;
+var num;
+x = document.getElementById("inputNUMbox").value;
+y = document.getElementById("BOX1NUM_ID").value;
+z = document.getElementById("BOX2NUM_ID").value;
+
+
+num = parseInt(x, y).toString(z);
+document.getElementById("outputbox").innerHTML = num.toUpperCase();
+/*output.style.display = "block";*/
+
+}
+
+
+
+
+function clickNum(){
+
+TXT1.style.display = "block";
+TXT2.style.display = "block";
+BOX1NUM_ID.style.display = "block";
+BOX2NUM_ID.style.display = "block";
+SBMT.style.display = "block";
+inputNUMbox.style.display = "block";
+inputbox.style.display = "none";
+BOX1_ID.style.display = "none";
+LetterSBMT.style.display = "none";
+SaveFile.style.display = "none";
+
+var elem = document.getElementById("TXT1").value;
+document.getElementById("TXT1").innerHTML = "From base: (2-36)";
+var elem2 = document.getElementById("TXT2").value;
+document.getElementById("TXT2").innerHTML = "To base: (2-36)";
+
+}
+
+
+
+function clickLetter(){
+
+
+TXT1.style.display = "block";
+BOX1_ID.style.display = "block";
+LetterSBMT.style.display = "block";
+inputbox.style.display = "block";
+TXT2.style.display = "none";
+inputNUMbox.style.display = "none";
+SBMT.style.display = "none";
+BOX1NUM_ID.style.display = "none";
+BOX2NUM_ID.style.display = "none";
+SaveFile.style.display = "none";
+
+var elem = document.getElementById("TXT1").value;
+document.getElementById("TXT1").innerHTML = "Enter the amount you want to shift the alphabet by:";
+}
+
+function openFile(){
+
+var file = document.getElementById("File").files[0];
+var filereader = new FileReader();
+filereader.onload = function (f) {
+    var txtbox = document.getElementById("inputbox");
+    var txtbox2 = document.getElementById("inputNUMbox");
+
+    txtbox.value = f.target.result;
+    txtbox2.value = f.target.result;
+};
+filereader.readAsText(file);
+}
+
+
+
+
+/*
+const form = document.forms[0];
+
+form.addEventListener ('submit',event => {
+  event.preventDefault();
+  output.innerHTML = [... form.text.value ].map(str => encrypt(str)).join('');
+}
+); */
+
+function encrypt() {
+
+
+var str;
+str = document.getElementById("inputbox").value;
+
+var shiftnum = document.getElementById("BOX1_ID").value;
+
+  var shift = Number(shiftnum);
+
+  var newletter= "";
+  for (var i = 0; i < str.length; i++){
+  	var c = str[i].charCodeAt();
+    if (c >= 65 && c <= 90){
+    	newletter += String.fromCharCode((c - 65 + shift)%26 + 65);
+    }
+    else if (c >= 97 && c <= 122){
+    	newletter += String.fromCharCode((c - 97 + shift)%26 + 97);
+    }
+   else {
+   newletter += str[i]
+  document.getElementById("outputbox").innerHTML = newletter;
+    }
+  }
+
+  document.getElementById("outputbox").innerHTML = newletter;
+
+}
+
+
+</script>
+<body>
+<!--<body text="#ffffff"> -->
+<label for="title">Encrypt or Decrypt! </label>
+<br>
+<form><input type="radio" name="Radiobtn" id="Numbox" value="Number" onclick="clickNum()"> Number? (Limit <= 16 digits)<br>
+      <input type="radio" name="Radiobtn" id="Letterbox" value="Letter" onclick="clickLetter()"> Letter/Alphabet?<br>
+</form>
+<br>
+
+
+<input id="File" name="File" type="file" />
+<br>
+<button type='Filebtn' onclick="openFile()" id="FileSBMT">Submit File</button>
+<br>
+<br>
+<textarea id="inputbox" style='display: none' rows = "10" cols "80" name = "inputbox" placeholder = "Enter your Letter input here..." >
+
+</textarea>
+<textarea id="inputNUMbox" maxlength= "16" style='display: none' rows = "10" cols "80" name = "inputbox" placeholder = "Enter your Number input here...">
+
+</textarea>
+<textarea readonly id="outputbox" rows = "10" cols "80" name = "outputbox" placeholder = "Output will show up here...">
+
+</textarea>
+<br>
+<br>
+<label for="numbase" style='display: none' id="TXT1"> </label>
+<input type="number" max="36" min = "2" style='display: none' id="BOX1NUM_ID">
+<input type="text" style='display: none' id="BOX1_ID">
+<br>
+<label for="basecon" style='display: none' id="TXT2"> </label>
+<input type="number" max="36" min = "2" style='display: none' id="BOX2NUM_ID">
+<br>
+<button type='button' style='display: none' onclick="numChanger()" id="SBMT">Submit</button>
+
+<button type='button' style='display: none' onclick="encrypt()" id="LetterSBMT">Submit</button>
+
+<button type='button' style='display: none' id="FileSave">Save File</button>
+
+
 </body>
 
 </html>
